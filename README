@@ -1,0 +1,24 @@
+criando a venv
+python -m venv venv
+
+ativando a venv
+.\venv\Scripts\activate
+
+instalando o django
+pip install django
+
+criando o start project
+django-admin startproject app .
+gerando as migrate
+python manage.py migrate
+
+python manage.py createsuperuser
+
+criando a app de brands
+python .\manage.py startapp brands
+python .\manage.py startapp categories
+python .\manage.py startapp suppliers
+python .\manage.py startapp products
+python .\manage.py startapp inflows
+apos criar o model rodar
+python manage.py makemigrations    
