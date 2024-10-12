@@ -1,6 +1,4 @@
-
 from django.urls import reverse_lazy
-from django.db.models.query import QuerySet
 from django.views.generic import ListView,CreateView,DetailView,UpdateView,DeleteView
 from . import models,forms
 
