@@ -20,5 +20,6 @@ python .\manage.py startapp categories
 python .\manage.py startapp suppliers
 python .\manage.py startapp products
 python .\manage.py startapp inflows
+python .\manage.py startapp outflows
 apos criar o model rodar
 python manage.py makemigrations    
