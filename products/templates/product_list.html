@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block title %}
-SGE - Marcas
+SGE - Produtos
 {% endblock %}
 
 {% block content %}
 
 <div class="row mb-3">
     <div class="col-md-6">
-        <form method="get" action="{% url 'brand_list' %}">
+        <form method="get" action="{% url 'product_list' %}">
             <div class="input-group">
-                <input type="text" class="form-control" name="name" placeholder="Nome" value="{{request.GET.name}}">
+                <input type="text" class="form-control" name="title" placeholder="Titulo" value="{{request.GET.title}}">
                 <button type="submit" class="btn btn-primary">
                     <i class="bi bi-search"></i>
                 </button>
@@ -19,9 +19,25 @@ SGE - Marcas
 
     </div>
     <div class="col-md-6">
-        <a href="{% url 'brand_create' %}" class="btn btn-success float-end">
-         <i class="bi bi-plus">Nova Marca</i>   
+        <a href="{% url 'product_create' %}" class="btn btn-success float-end">
+         <i class="bi bi-plus">Novo produto</i>   
         </a>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-6">
+        <form method="get" action="% url 'product_list' %">
+            <div class=" input-group">
+
+                <select class="form-select" name="category" id="#"></select>
+                <select class="form-select" name="brand" id="#"></select>
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-filter">Filtrar</i>
+                </button>
+            </div>
+        </form>
+
     </div>
 </div>
 
@@ -30,21 +46,31 @@ SGE - Marcas
         <thead class="thead-dark">
             <tr>
                 <th>ID</th>
-                <th>Nome</th>
-                <th>Descrição</th>
+                <th>Titulo</th>
+                <th>Categoria</th>
+                <th>Marca</th>
+                <th>Preço de Custo</th>
+                <th>Preço de Venda</th>
+                <th>Numero de Serie</th>
+                <th>Quantidade</th>
                 <th>Açõees</th>
             </tr>
         </thead>
         <tbody>
-            {% for brand in brands %}
+            {% for product in products %}
                 <tr>
-                    <td>{{ brand.id }}</td>
-                    <td>{{ brand.name }}</td>
-                    <td>{{ brand.description }}</td>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.title }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.brand }}</td>
+                    <td>{{ product.cost_price }}</td>
+                    <td>{{ product.selling_price }}</td>
+                    <td>{{ product.serie_number }}</td>
+                    <td>{{ product.quantity }}</td>
                     <td>
-                        <a href="{% url 'brand_detail' brand.id %}" class="btn btn-info btn-smal"><i class="bi bi-eye"></i></a>
-                        <a href="{% url 'brand_update' brand.id %}" class="btn btn-warning btn-smal"><i class="bi bi-pencil"></i></a>
-                        <a href="{% url 'brand_delete' brand.id %}" class="btn btn-danger btn-smal"><i class="bi bi-trash"></i></a>
+                        <a href="{% url 'product_detail' product.id %}" class="btn btn-info btn-smal"><i class="bi bi-eye"></i></a>
+                        <a href="{% url 'product_update' product.id %}" class="btn btn-warning btn-smal"><i class="bi bi-pencil"></i></a>
+                        <a href="{% url 'product_delete' product.id %}" class="btn btn-danger btn-smal"><i class="bi bi-trash"></i></a>
                     </td>
                 </tr>
             {% endfor %}
