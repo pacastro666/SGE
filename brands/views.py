@@ -8,7 +8,7 @@ class BrandListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = models.Brand
     template_name = 'brand_list.html'
     context_object_name = 'brands'
-    paginate_by = 3
+    paginate_by = 10
     permission_required = 'brands.view_brand'
 
     def get_queryset(self) :
