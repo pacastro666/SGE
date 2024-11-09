@@ -23,3 +23,5 @@ python .\manage.py startapp inflows
 python .\manage.py startapp outflows
 apos criar o model rodar
 python manage.py makemigrations    
+
+django-admin startapp authentication
