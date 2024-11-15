@@ -6,4 +6,5 @@ class ProductdAdmin(admin.ModelAdmin):
     list_display = ('title', 'serie_number',)
     search_fields = ('title',)
 
+
 admin.site.register(models.Product, ProductdAdmin)

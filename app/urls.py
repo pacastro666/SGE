@@ -6,7 +6,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('login/', auth_views.LoginView.as_view(),  name='login'),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
     path('api/v1/', include('authentication.urls')),
@@ -19,4 +19,3 @@ urlpatterns = [
     path('', include('outflows.urls')),
     path('', include('products.urls')),
 ]
-

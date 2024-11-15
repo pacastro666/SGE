@@ -1,9 +1,9 @@
 from rest_framework import generics
-from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import ListView,CreateView,DetailView
+from django.views.generic import ListView, CreateView, DetailView
 from app import metrics
-from . import models,forms,serializers
+from . import models, forms, serializers
 
 
 class OutflowListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
@@ -13,7 +13,7 @@ class OutflowListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     paginate_by = 3
     permission_required = 'outflows.view_outflow'
 
-    def get_queryset(self) :
+    def get_queryset(self):
         queryset = super().get_queryset()
         product = self.request.GET.get('product')
 
@@ -21,11 +21,12 @@ class OutflowListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
             queryset = queryset.filter(product__icontains=product)
 
         return queryset
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['sales_metrics'] = metrics.get_sales_metrics()
         return context
+
 
 class OutflowCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = models.Outflow
@@ -33,6 +34,7 @@ class OutflowCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
     form_class = forms.OutlowForm
     success_url = reverse_lazy('outflow_list')
     permission_required = 'outflows.add_outflow'
+
 
 class OutflowDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = models.Outflow
@@ -43,6 +45,7 @@ class OutflowDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView)
 class OutflowCreateListAPIView(generics.ListCreateAPIView):
     queryset = models.Outflow.objects.all()
     serializer_class = serializers.OutflowSerializer
+
 
 class OutflowRetriveAPIView(generics.RetrieveAPIView):
     queryset = models.Outflow.objects.all()

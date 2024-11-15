@@ -10,4 +10,4 @@ urlpatterns = [
 
     path('api/v1/categories/', views.CategoryCreateListAPIView.as_view(), name='category-create-list-api-view'),
     path('api/v1/categories/<int:pk>/', views.CategoryRetriveUpdateDestroyAPIView.as_view(), name='category-detail-api-view'),
-    ]
+]
